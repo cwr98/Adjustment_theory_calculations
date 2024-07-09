@@ -1,2 +1,1 @@
-# TU_Berlin
-Code written during my studies at Technical University Berlin
+# Adjustment/Estimation calculations
