@@ -22,41 +22,53 @@ data = load('distances.txt');
 %Number of measurements
 n = length(data);
 
+absFreq = absFrequency(data);
+relFreq = relFrequency(data);
+cumFreq = cumFrequency(data);
+
 %Absolute frequency function/polygon
-% figure(1)
-% % [x y] 
-% % bar
-% hold on
-% % plot
-% grid 
-% % title
-% % xlabel
-% % ylabel
-% hold off
+figure(1);
+%[x y] 
+x = 1:length(absFreq);  % Assuming absFreq has one frequency per bin
+y = absFreq;
+bar(absFreq);
+hold on
+%plot
+bar(x, y);  % Bar plot of absolute frequencies
+hold on;
+plot(x, y, '-o');  % Line plot on top of bars
+
+title('Absolute Frequency');
+xlabel('Data Values');
+ylabel('Absolute Frequency');
+grid on;
 
 %Relative frequency function/polygon
-% figure (2)
+figure (2);
 % [x y] 
-% bar
-% hold on
-% plot
-% grid
-% title
-% xlabel
-% ylabel
-% hold off
-% 
+x = 1:length(relFreq);
+y = relFreq;
+
+bar(relFreq);
+hold on
+%plot
+grid on;
+title('Relative frequency')
+xlabel('Data Values');
+ylabel('Relative frequency function');
+hold off
+
+
 % Cumulative frequency function/polygon
-% figure (3)
-% [x_cum y_cum] = 
-% bar
-% hold on
+figure (3);
+bar(cumFreq);
+hold on
 % plot
-% grid
-% title
-% xlabel
-% ylabel
-% hold off
+grid on;
+title('Cumulative frequency')
+xlabel('Data Values') 
+ylabel('Cumulative frequency function')
+hold off
 
 % Calculate the mean value, variance and standard deviation 
 % of a single observation as well as for the arithmetic mean
