@@ -1,0 +1,16 @@
+disp("Why it is a non-linear adjustment problem? Please give a short explanation.") 
+disp("The curve is nonlienar, i.e. line is not straight & our functional model needs to be nonlinear.") 
+
+This is not a justufication why an adjustment problem is linear or not. A parabola is also nonlinear, however, the resulting adjustment problem is linear if you use the follwing functional mode
+
+y= a_0 + a_1*x +a_2*x^2
+
+You "only" implemented a complicated way to solve a simple linear adjustment problem ;)
+
+disp("Assesment: It remains unclear if a parabola is the best solution an alternative would be a exponential function.")
+
+Yes, you are right, your model does not fit the given points very well. Please use the exponential growth as the functional model. 
+
+y= a.*exp(b*x)+c
+
+But, why didn't you do this, if you already recognised it?
