@@ -150,8 +150,10 @@ st=0.1;
 dH_dt=diff(H,t); 
 H=eval(subs([H,t], t_end-t_0));
 fprintf('Hight of building and time in seconds: %f\n', double(H));
+
 dH_dt = subs(dH_dt, t, t_end-t_0);
 fprintf('dH/dt (partial derivative w.r.t t_0 to t_end): %f\n', double(dH_dt));
+
 %Standard deviation
 SA=eval(sqrt(dH_dt^2*st^2));
 fprintf('STD: %f\n', double(SA));
@@ -197,7 +199,7 @@ sigma_t1 = sqrt(dt1_dstart_v^2 * sigma_start_v^2 + dt1_da^2 * sigma_a^2);
 
 % substitute the symbols with the actual numbers:
 t1_sol_val=subs(t1_sol, [start_v, a], [start_v_val, a_val]);
-fprintf('t1_sol/start_v (partial derivative w.r.t t1_sol to start_v and a): %f\n', double(t1_sol_val));
+fprintf('How much time does the car need to travel 1 km from the starting point 0: %f\n', double(t1_sol_val));
 sigma_t1_val = eval(subs(sigma_t1, [start_v, a], [start_v_val, a_val]));
 fprintf('STD for the solution of t1: %f\n', double(sigma_t1_val));
 
