@@ -19,27 +19,40 @@ close all;
 disp('Task 1')
 
 %Given
-a = 3;           %[m]
-b = 4;           %[m]
-c = 5;           %[m]
+%a = 3;           %[m]
+%b = 4;           %[m]
+%c = 5;           %[m]
+syms a b c s
 
 s_abc = 0.02;    %[m]
 
 %Semiperimeter of the triangle
-s = (a+b+c)/2;    %[m]
+semi = (a+b+c)/2;    %[m]
  
 %Area of the triangle
-A = sqrt(s*(s-a)*(s-b)*(s-c));        %[m^2]
+A = sqrt(semi*(s-a)*(s-b)*(s-c));        %[m^2]
 
 %Functional relationship 
-ap = s - a;
-bp = s - b;
-cp = s - c;
-A_2 = s*ap*bp*cp;
+sa = s - a;
+sb = s - b;
+sc = s - c;
+A_2 = s*sa*sb*sc;
+
 %Design matrices
-F1 = [1 0 0; 0 1 0; 0 0 1; 1/2 1/2 1/2];
-F2 = [-1 0 0 1; 0 -1 0 1; 0 0 -1 1; 0 0 0 1];
-F3 = [s*bp*cp s*ap*cp s*ap*bp ap*bp*cp];
+F1 = jacobian(semi, [a, b, c]);
+F1 = subs(F1, [a, b, c], [3, 4, 5]);
+F1 = [F1; 1 0 0; 0 1 0; 0 0 1;];
+%F1 = [1 0 0; 0 1 0; 0 0 1; 1/2 1/2 1/2];
+
+% Compute the Jacobian with respect to (s, a, b, c)
+functionsF2 = [s, sa, sb, sc];
+F2 = jacobian(functionsF2, [s, a, b, c]);
+
+% Substitute numerical values for a, b, c
+F2 = subs(F2, [a, b, c], [3, 4, 5]);
+%F2 = [-1 0 0 1; 0 -1 0 1; 0 0 -1 1; 0 0 0 1];
+
+F3 = [s*sb*sc s*sa*sc s*sa*sb sa*sb*sc];
 F4 = 1/2*1/sqrt(A_2);
 F = F4*F3*F2*F1;
 
