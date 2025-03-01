@@ -16,6 +16,7 @@ close all;
 %--------------------------------------------------------------------------
 %   Task 2: Adjustment of a parabola
 %--------------------------------------------------------------------------
+% y = ax^2+bx+c for formla for parabola
 x1 = 1;
 x2 = 2;
 x3 = 3;
@@ -55,7 +56,7 @@ S_LL = diag(s_L.^2);
 %Theoretical reference standard deviation
 sigma_0 = 1;  %a priori      
 %Cofactor matrix of the observations
-Q_LL = 1 / sigma_0^2*S_LL; 
+Q_LL = 1 / sigma_0^2*S_LL;
 
 %Weight matrix
 P = inv(Q_LL);
@@ -64,6 +65,10 @@ P = inv(Q_LL);
 %  Adjustment
 %--------------------------------------------------------------------------
 %Design matrix
+%we do this because of the FM. it is a nonlinear FM
+%BUT a linear Adjustment due to the unkowns being linear dependent
+% y = ax^2+bx+c for formla for parabola
+%x = x.^2 = ax^2, x = bx, ones(no_n,1) = 1
 A = [x.^2 x ones(no_n,1)];
 
 %Normal matrix
