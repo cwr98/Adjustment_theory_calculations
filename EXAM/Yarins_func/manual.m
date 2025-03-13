@@ -27,6 +27,5 @@ eq3 = 0.9*x-y==0;
 % Solve the system of equations
 solution = solve([eq1, eq2, eq3], [x, y, k]);
 
-% Display the solution
 disp(solution)
 

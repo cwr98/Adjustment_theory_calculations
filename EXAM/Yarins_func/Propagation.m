@@ -4,17 +4,21 @@ close all;
 
 format longG
 
-
+%givens
+%slope/distances
 s1 = 81.617; %m
 s2 = 143.524; %m
+%height at each point
 a=1.473; %m
 b=1.698;%m
 
+%Zenith angle
 z1 = 85.318*pi/200; %rad
 z2 = 67.924*pi/200;
 
-ha = 35.945;
+ha = 35.945; %benchmark
 
+% Compute the heights of points C and B (h c and h b) using the provided observations. 
 hc = s1*cos(z1)-b+ha
 hb=s2*cos(z2)-b+hc
 
@@ -35,12 +39,16 @@ sxx = f*s_ll*f'
 
 sqrt(sxx)
 
+s3 = 95.000; % Example slope distance between points (e.g., point 3 and another point), [m]
+a1 = 45 * pi / 200; % Example horizontal angle at point A, converted from gon to rad
+a2 = 60 * pi / 200; % Example horizontal angle at point C, converted from gon to rad
+
 x2 = s2-s3*cos(a2);
 y2 = s3*sin(a2);
 x4 = s1*cos(a1);
 y4 = -s1*sin(a1);
 
-d = distance_(x2,y2,x4,y4)
+d = distance(x2,y2,x4,y4)
 
 f1= [0 1 -cos(a2) 0 s3*sin(a2);
     0 0 sin(a2) 0 s3*cos(a2);
@@ -57,7 +65,7 @@ f = f2*f1;
 s_xx = f*s_ll*f';
 sqrt(diag(s_xx))
 
-
+%new task?
 t1 = 9.7 %sec
 t2 = 23.1 %sec
 
@@ -78,9 +86,12 @@ f1 = [s1*cos(a1) 0 sin(a1) 0 0 0;
 
 d12 = distance(x1, y1, x2, y2)
 
-f2 = [distance_der(x1, y1, x2, y2, 'x1') distance_der(x1, y1, x2, y2, 'y1') distance_der(x1, y1, x2, y2, 'x2') distance_der(x1, y1, x2, y2, 'y2') 0 0;
-    0 0 0 0 1 0;
-    0 0 0 0 0 1]
+% f2 = [distance_der(x1, y1, x2, y2, 'x1'), 
+%     distance_der(x1, y1, x2, y2, 'y1'), 
+%     distance_der(x1, y1, x2, y2, 'x2'), 
+%     distance_der(x1, y1, x2, y2, 'y2'), 0, 0;
+%     0 0 0 0 1 0;
+%     0 0 0 0 0 1]
 
 syms x1_param x2_param y1_param y2_param;
 f = sqrt((x2_param-x1_param)^2+(y2_param-y1_param)^2);

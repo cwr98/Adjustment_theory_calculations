@@ -57,7 +57,7 @@ C = [0.9 -1]; %for the first constraint
  
  %Extended normal matrix
  N_ext = [N C';
-     C 0];
+          C 0];
  
  %Vector of right hand side of normal equations
  n = A'*P*L;

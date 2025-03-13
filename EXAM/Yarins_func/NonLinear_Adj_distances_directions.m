@@ -88,7 +88,14 @@ iteration = 0;
 while max_x_hat>epsilon || Check2>delta        
     
      %Observations as functions of the approximations for the unknowns
-     L_0 = [direction_rad(x1,y1,x6,y6,w1) direction_rad(x1,y1,x15,y15,w1) direction_rad(x6,y6,x1,y1,w6) direction_rad(x6,y6,x9,y9,w6) direction_rad(x9,y9,x15,y15,w9) direction_rad(x9,y9,x1,y1,w9) direction_rad(x9,y9,x6,y6,w9) direction_rad(x15,y15,x1,y1,w15) direction_rad(x15,y15,x9,y9,w15) distance_(x6,y6,x1,y1) distance_(x9,y9,x1,y1) distance_(x9,y9,x6,y6) distance_(x15,y15,x1,y1) distance_(x15,y15,x9,y9)]';
+     L_0 = [direction_rad(x1,y1,x6,y6,w1) direction_rad(x1,y1,x15,y15,w1) 
+            direction_rad(x6,y6,x1,y1,w6) direction_rad(x6,y6,x9,y9,w6) 
+            direction_rad(x9,y9,x15,y15,w9) direction_rad(x9,y9,x1,y1,w9) 
+            direction_rad(x9,y9,x6,y6,w9) direction_rad(x15,y15,x1,y1,w15) 
+            direction_rad(x15,y15,x9,y9,w15) 
+            distance(x6,y6,x1,y1) distance(x9,y9,x1,y1) 
+            distance(x9,y9,x6,y6) distance(x15,y15,x1,y1)
+            distance(x15,y15,x9,y9)]';
      
      %Vector of reduced observations
      l = L-L_0;
@@ -153,7 +160,20 @@ while max_x_hat>epsilon || Check2>delta
      
 
      %Check 2
-     L_0 = [direction_rad(x1,y1,x6,y6,w1) direction_rad(x1,y1,x15,y15,w1) direction_rad(x6,y6,x1,y1,w6) direction_rad(x6,y6,x9,y9,w6) direction_rad(x9,y9,x15,y15,w9) direction_rad(x9,y9,x1,y1,w9) direction_rad(x9,y9,x6,y6,w9) direction_rad(x15,y15,x1,y1,w15) direction_rad(x15,y15,x9,y9,w15) distance_(x6,y6,x1,y1) distance_(x9,y9,x1,y1) distance_(x9,y9,x6,y6) distance_(x15,y15,x1,y1) distance_(x15,y15,x9,y9)]';
+     L_0 = [direction_rad(x1,y1,x6,y6,w1) direction_rad(x1,y1,x15,y15,w1) 
+         direction_rad(x6,y6,x1,y1,w6) 
+         direction_rad(x6,y6,x9,y9,w6) 
+         direction_rad(x9,y9,x15,y15,w9) 
+         direction_rad(x9,y9,x1,y1,w9) 
+         direction_rad(x9,y9,x6,y6,w9) 
+         direction_rad(x15,y15,x1,y1,w15) 
+         direction_rad(x15,y15,x9,y9,w15) 
+         distance(x6,y6,x1,y1) 
+         distance(x9,y9,x1,y1) 
+         distance(x9,y9,x6,y6) 
+         distance(x15,y15,x1,y1) 
+         distance(x15,y15,x9,y9)]';
+
      Check2 = max(abs(L_hat-L_0));    
      
      %Update number of iterations
