@@ -1,0 +1,20 @@
+xi = m * cos(alpha) * xi - m * sin(alhpa) * yi + X0
+yi = m * sin(alpha) * xi + m * cos(alpha) * yi +y0
+intial val 
+x0 = 291.70
+y0 = 398.74
+
+scale factor m
+rotation angle alpha
+	these are the unkowns
+
+sigma = 1cm for x and y
+
+
+coord transformation
+
+other question
+coord of point on porabla 
+find a b c d 
+sigmia = 0.02
+find them using LSA
